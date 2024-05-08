@@ -6,7 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +38,6 @@ class PlayerControllerTest {
 
     }
 
-
     @Test
     public void testAmountOfPlayers() {
         driver.get("http://localhost:8080/players");
@@ -62,6 +64,16 @@ class PlayerControllerTest {
     public void testButtonText() {
         driver.get("http://localhost:8080/players");
         Assertions.assertEquals("Logga in", driver.findElement(By.tagName("button")).getText());
+    }
+
+    @Test
+    public void testNewEndPoint() {
+        driver.get("http://localhost:8080/players");
+        driver.findElement(By.cssSelector("ul li a")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement playerNameElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("player-name")));
+        String playerName = playerNameElement.getText();
+        Assertions.assertEquals("Tove", playerName);
     }
 
 
