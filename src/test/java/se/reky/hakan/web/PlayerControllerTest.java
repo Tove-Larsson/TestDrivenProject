@@ -32,10 +32,10 @@ class PlayerControllerTest {
 
     }
 
-//    public void test() {
-//        driver.get("http://localhost:8080/players");
-//
-//    }
+    public void test() {
+       driver.get("http://localhost:8080/players");
+
+    }
 
 
 
