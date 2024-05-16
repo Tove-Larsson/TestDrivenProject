@@ -14,6 +14,15 @@ class IOHandlerTest {
     }
 
     @Test
+    public void testScannerString() {
+        IOHandler scannerInput = ioHandlerScanner("Bye");
+        Assertions.assertEquals("Bye", scannerInput.nextLine());
+
+    }
+
+
+
+    @Test
     public void testScannerInt() {
         IOHandler ioHandler = ioHandlerScanner("8");
         Assertions.assertTrue(ioHandler.hasNextInt());
